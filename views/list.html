@@ -1,0 +1,19 @@
+﻿<table class="table table-hover">
+  <tr ng-repeat="fc in forecast">
+    <td style="width: 20%">
+      <a href="#weather/{{fc['cityName']}}">{{fc['cityName']}}</a>
+    </td>
+    <td>
+      <img src="http://l.yimg.com/a/i/us/we/52/{{fc['code']}}.gif"></img>
+    </td>
+    <td>
+      {{fc['text']}}
+    </td>
+    <td>
+      {{fc['high']}}
+    </td>
+    <td>
+      {{fc['low']}}
+    </td>
+  </tr>
+</table>
