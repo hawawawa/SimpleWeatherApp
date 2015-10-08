@@ -1,19 +1,45 @@
-﻿<table class="table table-hover">
-  <tr ng-repeat="fc in forecast">
-    <td style="width: 20%">
-      <a href="#weather/{{fc['cityName']}}">{{fc['cityName']}}</a>
-    </td>
-    <td>
-      <img src="http://l.yimg.com/a/i/us/we/52/{{fc['code']}}.gif"></img>
-    </td>
-    <td>
-      {{fc['text']}}
-    </td>
-    <td>
-      {{fc['high']}}
-    </td>
-    <td>
-      {{fc['low']}}
-    </td>
-  </tr>
-</table>
+﻿<div class="row">
+    <div class="col-xs-6" ng-controller="dateTime">
+        <h5>{{date | date:'MMMM dd, yyyy'}}</h5>
+    </div>
+    <div class="col-xs-6">
+        <select ng-model="sort" class="pull-right">
+          <option value="cityName">City</option>
+          <option value="high">High</option>
+          <option value="low">Low</option>
+        </select>
+    </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-hover" ng-model="sort">
+        <tr>
+          <th>City</th>
+          <th>Icon</th>
+          <th>Text</th>
+          <th>High</th>
+          <th>Low</th>
+        </tr>
+        <!-- {{forecast}} -->
+
+      <tr ng-repeat="fc in forecast | orderBy:sort">
+        <td >
+           <a href="#weather/{{fc['cityName']}}">{{fc['cityName']}}</a>
+        </td>
+        <td>
+          <img src="http://l.yimg.com/a/i/us/we/52/{{fc['code']}}.gif"></img>
+        </td>
+        <td>
+          {{fc['text']}}
+        </td>
+        <td ng-model = "degrees">
+          {{ degrees == "F" ? fc['high']: (fc['high'] - 32)/1.800 | number:0 }}
+        </td>
+        <td ng-model = "degrees">
+          {{ degrees == "F" ? fc['low']: (fc['low'] - 32)/1.800 | number:0 }}
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>

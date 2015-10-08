@@ -1,55 +1,35 @@
 ﻿<!doctype html>
 <html>
 <head>
-    <title>Weather App</title>
+    <title>Starting Angular</title>
 </head>
 <!-- Notice here that ng-app references our 'weatherApp' module -->
 <body ng-app='weatherApp'>
     <!-- Reference the application level controller for the title model. -->
- <!--        <h1>{{title}}</h1>
-        <h3>If this fails use Firefox</h3> -->
-        <!-- The #home link selects routing for '/home'.  Routing for
-             #add does not exist yet so the default for '/home' will be chosen.-->
-         <!-- | <a href="#weather">Weather</a> -->
-        <!-- <hr> -->
-        <!-- Our one page app works by switching views here. -->
-
-    <div ng-controller="AppCtrl" ng-model="title"> 
-        <!-- <div class="container"> -->
+    <div ng-controller="AppCtrl" ng-model="title">
+         <div class="container">
             <div class="row">
-                <div class="col-md-6">
-                    Icon
+                <div class="col-xs-8">
+                    <h3>
+                        <img src="http://l.yimg.com/a/i/us/we/52/21.gif"></img>
+                        Simple Weather App
+                    </h3>
+                </div>
+                <div class="col-xs-offset-8 col-xs-4">
+                    <form class="inline-form pull-right" ng-init="degrees = 'F'">
+                        <input ng-model="degrees" type="radio" name="degrees" value="C"> C
+                        <input ng-model="degrees" type="radio" name="degrees" value="F" checked> F
+                    </form>
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-xs-12">
                     <a href="#home">Home</a>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-xs-12 col-sm-9 col-md-6 col-lg-6">
                 <div ng-view></div>
-            </div>
-        <!-- </div> -->
+        </div>
     </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     <!--angular-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>

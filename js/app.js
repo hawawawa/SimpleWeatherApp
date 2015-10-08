@@ -16,13 +16,24 @@ var weatherApp = angular.module('weatherApp', ['ngRoute', 'weatherControllers'])
         templateUrl: 'views/list.html',
         controller: 'ListCtrl'
     })
-    .when("/weather/:name*", {
-        templateUrl: function(urlattr){
-          return 'views/weather.html';
-        },
-        controller:  'WeatherCtrl'
-        // resolve:
+    .when("/weather/:name", {
+        /* When 'home' route is selected 
+           use the 'list.html' template and the 'ListCtrl' controller. */
+        templateUrl: 'views/weather.html',
+        controller: 'WeatherCtrl',        
     }).
     // If no route is selected then use the 'home' route.
     otherwise({ redirectTo: '/home' });
+});
+
+weatherApp.controller('dateTime', function($scope){
+  $scope.date = new Date();
+});
+
+weatherApp.controller('degrees', function($scope){
+  $scope.degrees;
+});
+
+weatherApp.controller('sort', function($scope){
+  $scope.sort;
 });

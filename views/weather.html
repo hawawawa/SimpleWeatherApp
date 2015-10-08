@@ -1,9 +1,34 @@
-﻿
+﻿<div ng-repeat='fc in forecast'>
+  <div class="row">
+    <div class="col-md-12">
+      <table class="table table-hover">
+        <h3>{{fc.cityName}}</h3>
+        <tr>
+          <th>Date</th>
+          <th>Icon</th>
+          <th>Text</th>
+          <th>High</th>
+          <th>Low</th>
+        </tr>
 
-
-
-
-<div ng-repeat="fc1 in fiveDayForecast">
-    {{ fc1 }} <br/>
+        <tr ng-repeat="city in fc">
+          <td>
+          {{city['date']}}
+          </td>
+          <td>
+            <img src="http://l.yimg.com/a/i/us/we/52/{{city['code']}}.gif"></img>            
+          </td>
+          <td>
+            {{city['text']}}
+          </td>
+          <td ng-model = "degrees">
+            {{ degrees == "F" ? city['high']: (city['high'] - 32)/1.800 | number:0 }}
+          </td>
+          <td ng-model = "degrees">
+            {{ degrees == "F" ? city['low']: (city['low'] - 32)/1.800 | number:0 }}
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
 </div>
-<br/><br/>
